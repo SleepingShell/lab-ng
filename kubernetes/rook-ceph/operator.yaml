@@ -5,12 +5,11 @@ metadata:
   namespace: rook-ceph
 spec:
   interval: 5m
-  chart:
-    spec:
-      chart: rook-ceph
-      version: v1.12.1
-      sourceRef:
-        kind: HelmRepository
-        name: rook-charts
-        namespace: flux-system
-      interval: 5m
+  spec:
+    chart: rook-ceph
+    version: v1.12.1
+    sourceRef:
+      kind: HelmRepository
+      name: rook-charts
+      namespace: flux-system
+    interval: 5m
