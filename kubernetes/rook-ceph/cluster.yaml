@@ -27,7 +27,7 @@ spec:
       - name: "bigboi"
         devices:
           - name: "fioa"
-          #- name: "sda"
+          - name: "sda"
           #- name: "sdb"
           #- name: "sdc"
           #- name: "sde"
