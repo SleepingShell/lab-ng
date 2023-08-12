@@ -27,11 +27,16 @@ spec:
       - name: "bigboi"
         devices:
           - name: "fioa"
+            config:
+              osdsPerDevice: "2"
+              deviceClass: "fioa"
           - name: "nvme1n1"
+            config:
+              osdsPerDevice: "2"
           #- name: "sdb"
           #- name: "sdc"
           #- name: "sde"
-          - name: "sdf"
+          #- name: "sdf"
           #- name: "sdg"
 
   resources:
@@ -57,7 +62,7 @@ spec:
     osd:
       requests:
         cpu: 200m
-        memory: 4096Mi
+        memory: 2048Mi
       limits:
         cpu: 1500m
         memory: 8192Mi
