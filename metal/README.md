@@ -1,1 +1,0 @@
-The following scripts should be ran on the kube nodes

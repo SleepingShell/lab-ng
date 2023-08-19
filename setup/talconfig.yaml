@@ -1,0 +1,50 @@
+clusterName: cluster
+talosVersion: v1.5.0
+kubernetesVersion: v1.28.0
+endpoint: https://192.168.1.200:6443
+domain: cluster.local
+allowSchedulingOnMasters: true
+additionalMachineCertSans:
+  - 192.168.1.200
+additionalApiServerCertSans:
+  - cluster.local
+clusterPodNets:
+  - 10.244.0.0/16
+clusterSvcNets:
+  - 10.96.0.0/12
+nodes:
+  - hostname: bigboi
+    ipAddress: 192.168.1.200
+    installDisk: /dev/nvme0n1
+    controlPlane: true
+    disableSearchDomain: true
+    nameservers:
+      - 1.1.1.1
+      - 8.8.8.8
+    extraKernelArgs:
+      - amd_iommu=on
+      - iommu=pt
+    patches:
+      - |-
+        machine:
+          install:
+            extensions:
+              - image: ghcr.io/siderolabs/amd-ucode:20230804
+              - image: ghcr.io/sleepingshell/siderolabs/fusionio:extension-1
+controlPlane:
+  patches:
+    - |-
+      - op: add
+        path: /machine/kubelet/extraArgs
+        value:
+          feature-gates: GracefulNodeShutdown=false,MixedProtocolLBService=true
+          rotate-server-certificates: "true"
+
+worker:
+  patches:
+    - |-
+      - op: add
+        path: /machine/kubelet/extraArgs
+        value:
+          feature-gates: GracefulNodeShutdown=false,MixedProtocolLBService=false
+          rotate-server-certificates: "true"
