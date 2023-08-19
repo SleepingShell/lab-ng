@@ -20,7 +20,6 @@ nodes:
     disableSearchDomain: true
     nameservers:
       - 1.1.1.1
-      - 8.8.8.8
     extraKernelArgs:
       - amd_iommu=on
       - iommu=pt
@@ -31,20 +30,3 @@ nodes:
             extensions:
               - image: ghcr.io/siderolabs/amd-ucode:20230804
               - image: ghcr.io/sleepingshell/siderolabs/fusionio:extension-1
-controlPlane:
-  patches:
-    - |-
-      - op: add
-        path: /machine/kubelet/extraArgs
-        value:
-          feature-gates: GracefulNodeShutdown=false,MixedProtocolLBService=true
-          rotate-server-certificates: "true"
-
-worker:
-  patches:
-    - |-
-      - op: add
-        path: /machine/kubelet/extraArgs
-        value:
-          feature-gates: GracefulNodeShutdown=false,MixedProtocolLBService=false
-          rotate-server-certificates: "true"

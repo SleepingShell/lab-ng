@@ -5,7 +5,6 @@ Welcome to my home lab
 talhelper gensecret > talsecret.sops.yaml
 sops -e -i talsecret.sops.yaml
 talhelper genconfig
-export TALOSCONFIG=~/k8s-gitops/talos/clusterconfig/talosconfig
 ```
 
 # Notes
