@@ -7,8 +7,11 @@ echo "Installing Talos Config"
 talosctl -n $BIGBOI_IP apply-config --insecure --file ./clusterconfig/cluster-bigboi.yaml
 cp ./clusterconfig/talosconfig ~/.talos/config
 
-read -p "Press Enter when install is done" </dev/tty
+read -p "Press Enter when install is done, asking for boostrap" </dev/tty
 talosctl -n $BIGBOI_IP --talosconfig=./clusterconfig/talosconfig bootstrap
+
+# This seems to not be automatically generating kubeconfig
+talosctl -n $BIGBOI_IP kubeconfig
 
 read -p "Press Enter when bootstrap is done" </dev/tty
 echo "Installing Cilium"
