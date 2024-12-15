@@ -1,6 +1,5 @@
 #!/bin/bash
 #Parts of this taken from billimek/k8s-gitops
-#source ./environment.sh
 source .env
 
 echo "Installing Talos Config"
