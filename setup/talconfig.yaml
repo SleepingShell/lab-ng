@@ -1,20 +1,20 @@
 clusterName: cluster
-talosVersion: v1.8.3
-kubernetesVersion: v1.31.3
-endpoint: https://192.168.8.200:6443
+talosVersion: v1.12.2
+kubernetesVersion: v1.35.0
+endpoint: https://10.100.10.5:6443
 domain: cluster.local
 allowSchedulingOnMasters: true
 additionalMachineCertSans:
-  - 192.168.8.200
+  - 10.100.10.5
 additionalApiServerCertSans:
   - cluster.local
 clusterPodNets:
   - 10.244.0.0/16
 clusterSvcNets:
-  - 10.96.0.0/12
+  - 10.16.0.0/12
 nodes:
   - hostname: bigboi
-    ipAddress: 192.168.8.200
+    ipAddress: 10.100.10.5
     installDisk: /dev/nvme0n1
     controlPlane: true
     schematic:
