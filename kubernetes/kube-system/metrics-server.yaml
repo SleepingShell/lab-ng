@@ -15,7 +15,9 @@ spec:
         kind: HelmRepository
         name: metrics-server-charts
         namespace: flux-system
-  # values:
+  values:
+    args:
+      - --kubelet-insecure-tls
   #   metrics:
   #     enabled: true
   #   serviceMonitor:
