@@ -1,0 +1,13 @@
+apiVersion: ceph.rook.io/v1
+kind: CephObjectStore
+metadata:
+  name: hdd-object-store
+  namespace: rook-ceph
+spec:
+  # Do not enable data replication – single host only
+  replicated: false
+
+  # Use an existing Ceph block pool as the backing storage
+  # The pool must already exist and be named "hdd-pool-replica"
+  # If it is not present, create it first with a `CephBlockPool` CRD.
+  storageClassName: "hdd-pool-replica"
