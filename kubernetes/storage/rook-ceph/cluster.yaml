@@ -18,6 +18,10 @@ spec:
         enabled: true
   monitoring:
     enabled: true
+  dashboard:
+    enabled: true
+    port: 8443
+    ssl: true
   storage:
     useAllNodes: false
     useAllDevices: false
