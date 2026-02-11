@@ -29,17 +29,18 @@ spec:
       osdsPerDevice: "1"
     nodes:
       - name: "bigboi"
-        devices:
+        devicePathFilter: "^/dev/disk/by-id/.*-(WDC|Samsung_SSD_970_EVO).*"
+        #devices:
           # - name: "fioa"
           #   config:
           #     osdsPerDevice: "2"
           #     deviceClass: "nvme"
-          - name: "nvme1n1"
-            config:
-              osdsPerDevice: "2"
-          - name: "sda"
-          - name: "sdb"
-          - name: "sdc"
+          # - name: "nvme1n1"
+          #   config:
+          #     osdsPerDevice: "2"
+          # - name: "sda"
+          # - name: "sdb"
+          # - name: "sdc"
 
   resources:
     api:

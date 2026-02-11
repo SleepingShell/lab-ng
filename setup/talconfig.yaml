@@ -15,7 +15,9 @@ clusterSvcNets:
 nodes:
   - hostname: bigboi
     ipAddress: 10.100.10.5
-    installDisk: /dev/nvme0n1
+    #installDisk: /dev/nvme0n1
+    installDiskSelector:
+      model: "Samsung SSD 860"
     controlPlane: true
     schematic:
       customization:
