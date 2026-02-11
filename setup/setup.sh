@@ -13,8 +13,10 @@ talosctl -n $BIGBOI_IP --talosconfig=./clusterconfig/talosconfig bootstrap
 talosctl -n $BIGBOI_IP kubeconfig
 
 read -p "Press Enter when bootstrap is done" </dev/tty
-echo "Installing Cilium"
+echo "Installing Cilium and sleeping for 20s"
 kubectl kustomize --enable-helm ./cni | kubectl apply -f -
+
+sleep 20
 
 echo "Installing fluxv2"
 flux check --pre > /dev/null
